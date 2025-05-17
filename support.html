@@ -5,6 +5,123 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Поддержка | RAM Download Center</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Дополнительные стили для чата */
+        .chat-container {
+            background: rgba(30, 30, 60, 0.6);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        #chatMessages {
+            height: 400px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            padding-right: 10px;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            display: flex;
+            animation: messageAppear 0.3s ease-out;
+        }
+
+        @keyframes messageAppear {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .user-message {
+            justify-content: flex-end;
+        }
+
+        .message-content {
+            max-width: 70%;
+            padding: 12px 18px;
+            border-radius: 18px;
+            line-height: 1.5;
+            position: relative;
+        }
+
+        .bot-message .message-content {
+            background: rgba(110, 69, 226, 0.2);
+            border: 1px solid rgba(110, 69, 226, 0.4);
+            border-radius: 18px 18px 18px 4px;
+        }
+
+        .user-message .message-content {
+            background: rgba(255, 126, 95, 0.2);
+            border: 1px solid rgba(255, 126, 95, 0.4);
+            border-radius: 18px 18px 4px 18px;
+        }
+
+        .chat-input-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        #userInput {
+            flex: 1;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            color: white;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        #userInput:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(255, 126, 95, 0.2);
+        }
+
+        #sendButton {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border: none;
+            color: white;
+            padding: 0 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        #sendButton:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(110, 69, 226, 0.4);
+        }
+
+        .typing-indicator {
+            display: inline-block;
+            padding: 10px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 18px;
+        }
+
+        .typing-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--secondary);
+            border-radius: 50%;
+            margin: 0 2px;
+            animation: typingAnimation 1.4s infinite ease-in-out;
+        }
+
+        .typing-dot:nth-child(1) { animation-delay: 0s; }
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes typingAnimation {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-5px); }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -20,105 +137,136 @@
 
         <section class="hero">
             <h1>Центр поддержки</h1>
-            <p>Мы здесь, чтобы помочь (на самом деле нет, но страница выглядит профессионально)</p>
+            <p>Наши квантовые операторы готовы помочь (по крайней мере, один из них точно живой)</p>
         </section>
 
-        <section class="support-options">
-            <div class="support-card">
-                <h2>📧 Электронная почта</h2>
-                <p>Напишите нам на help@ramdownload.fake</p>
-                <p><small>Ответим через 5-7 рабочих вселенных</small></p>
-            </div>
+        <section class="ai-chatbot">
+            <h2>🤖 RAM-Bot 3000</h2>
+            <p>Наш искуственный интеллект с искусственным интеллектом ответит на все вопросы</p>
             
-            <div class="support-card">
-                <h2>💬 Онлайн-чат</h2>
-                <p>Наш ИИ-бот ALICE (Artificial Lack of Intelligence Customer Expert) всегда на связи</p>
-                <button class="btn chat-btn">Начать чат</button>
-            </div>
-            
-            <div class="support-card">
-                <h2>📞 Телефон</h2>
-                <p>+1-800-RAM-DOWN</p>
-                <p><small>Линия работает в 29 февраля каждого года с 13:61 до 14:00</small></p>
-            </div>
-        </section>
-
-        <section class="common-issues">
-            <h2>⚡ Частые проблемы и "решения"</h2>
-            
-            <div class="issue">
-                <h3>RAM не загружается</h3>
-                <p>Попробуйте перевернуть компьютер вверх ногами. Гравитация может помочь битам течь в правильном направлении.</p>
-            </div>
-            
-            <div class="issue">
-                <h3>Компьютер стал слишком быстрым</h3>
-                <p>Это известный баг. Попробуйте удалить половину загруженной RAM, чтобы вернуться к нормальной скорости.</p>
-            </div>
-            
-            <div class="issue">
-                <h3>Получил счет за 1 ТБ RAM</h3>
-                <p>Поздравляем! Вы были выбраны для нашего эксклюзивного предложения "Мечтайте меньше, платите больше".</p>
-            </div>
-        </section>
-
-        <section class="contact-form">
-            <h2>📨 Напишите нам</h2>
-            <form id="supportForm">
-                <div class="form-group">
-                    <label for="name">Ваше имя</label>
-                    <input type="text" id="name" placeholder="Как к вам обращаться?">
+            <div class="chat-container">
+                <div id="chatMessages">
+                    <div class="message bot-message">
+                        <div class="message-content">
+                            Привет! Я RAM-Bot 3000. Чем могу помочь?<br>
+                            <small>Например, спросите: "Как скачать больше RAM?"</small>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" placeholder="Мы не будем спамить (наверное)">
+                
+                <div class="chat-input-container">
+                    <input type="text" id="userInput" placeholder="Введите ваш вопрос...">
+                    <button id="sendButton">Отправить</button>
                 </div>
-                <div class="form-group">
-                    <label for="issue">Суть проблемы</label>
-                    <select id="issue">
-                        <option value="download">Не могу скачать RAM</option>
-                        <option value="too-fast">Компьютер летает</option>
-                        <option value="bill">Неожиданный счет</option>
-                        <option value="other">Другое</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="message">Сообщение</label>
-                    <textarea id="message" placeholder="Опишите вашу проблему (мы всё равно не будем читать)"></textarea>
-                </div>
-                <button type="submit" class="btn">Отправить в никуда</button>
-            </form>
+            </div>
+            
+            <div class="chat-disclaimer">
+                ⚠️ Бот работает на экспериментальных квантовых алгоритмах. Может иногда врать.
+            </div>
         </section>
 
         <div class="disclaimer">
-            ⚠️ Наша служба поддержки существует в альтернативной реальности. Все обращения обрабатываются виртуальными сотрудниками с реальным безразличием.
+            ⚠️ Настоящая поддержка осуществляется только в параллельной вселенной. В этой вселенной мы предлагаем только виртуальную помощь.
         </div>
     </div>
 
     <footer>
         <p>© 2025 RAM Download Center | Поддержка: help@ramdownload.fake</p>
-        <p>Рейтинг доверия: 110% (по нашим внутренним исследованиям)</p>
+        <p>Квантовая линия поддержки открыта 25 часов в сутки</p>
     </footer>
 
-    <script src="script.js"></script>
     <script>
-        document.getElementById('supportForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Ваше сообщение отправлено в черную дыру интернета. Спасибо!');
-            this.reset();
-        });
+// Конфигурация
+const WORKER_URL = 'https://openrouterapikey.jolybyte20.workers.dev/chat';
 
-        document.querySelector('.chat-btn').addEventListener('click', function() {
-            const responses = [
-                "Попробуйте перезагрузить вселенную.",
-                "Это известная проблема. Мы работаем над её игнорированием.",
-                "Ваш запрос очень важен для нас. Пожалуйста, подождите вечность.",
-                "Я всего лишь бот. Что вы от меня хотите?",
-                "Ответ содержится в вопросе. Но я не скажу где."
-            ];
-            const randomResponse = responses[Math.floor(Math.random() * responses.length)];
-            alert('ALICE: ' + randomResponse);
-        });
+// Элементы интерфейса
+const chatMessages = document.getElementById('chatMessages');
+const userInput = document.getElementById('userInput');
+const sendButton = document.getElementById('sendButton');
+
+// Добавление сообщения
+function addMessage(role, content) {
+  const messageDiv = document.createElement('div');
+  messageDiv.className = `message ${role}-message`;
+  messageDiv.innerHTML = `<div class="message-content">${content}</div>`;
+  chatMessages.appendChild(messageDiv);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+// Индикатор набора
+function showTyping() {
+  const typingDiv = document.createElement('div');
+  typingDiv.className = 'message bot-message';
+  typingDiv.id = 'typingIndicator';
+  typingDiv.innerHTML = `
+    <div class="message-content typing-indicator">
+      <div class="typing-dot"></div>
+      <div class="typing-dot"></div>
+      <div class="typing-dot"></div>
+    </div>
+  `;
+  chatMessages.appendChild(typingDiv);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function hideTyping() {
+  const indicator = document.getElementById('typingIndicator');
+  if (indicator) indicator.remove();
+}
+
+// Отправка сообщения
+async function sendMessage() {
+  const message = userInput.value.trim();
+  if (!message) return;
+
+  addMessage('user', message);
+  userInput.value = '';
+  showTyping();
+
+  try {
+    const response = await fetch(WORKER_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Origin': 'https://jolybyte.github.io'
+      },
+      body: JSON.stringify({ message })
+    });
+
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    
+    const data = await response.json();
+    hideTyping();
+    
+    if (data.choices && data.choices[0]) {
+      addMessage('bot', data.choices[0].message.content);
+    } else {
+      addMessage('bot', '🤖 Ошибка: нестандартный ответ от сервера');
+    }
+  } catch (error) {
+    hideTyping();
+    addMessage('bot', '💥 Квантовые помехи! Попробуйте позже.');
+    console.error('Chat error:', error);
+  }
+}
+
+// Инициализация
+sendButton.addEventListener('click', sendMessage);
+userInput.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') sendMessage();
+});
+
+// Приветственное сообщение
+addMessage('bot', `
+  Привет! Я RAM-Bot 9000 🤖<br>
+  <small>Версия 4.2.0 (Квантовая сборка)</small><br><br>
+  Спросите меня о:<br>
+  • Загрузке DDR6 через 5G<br>
+  • Виртуальных модулях памяти<br>
+  • Квантовом ускорении ПК<br><br>
+  <em>P.S. 99.9% пользователей верят в нашу технологию! (остальные 0.1% - инженеры)</em>
+`);
     </script>
 </body>
 </html>
+
