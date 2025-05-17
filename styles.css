@@ -495,3 +495,118 @@ footer {
 .special-offer h2 {
     margin-bottom: 1rem;
 }
+
+
+
+/* Мобильные стили */
+@media (max-width: 768px) {
+  /* Общие стили */
+  .container {
+    padding: 1rem;
+  }
+  
+  /* Шапка */
+  header {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  nav a {
+    margin: 0 0.5rem;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  /* Герой-секция */
+  .hero h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+  
+  .hero p {
+    font-size: 1rem;
+  }
+  
+  /* Особенности */
+  .features {
+    flex-direction: column;
+  }
+  
+  .feature {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  /* Продукты */
+  .products {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Чат-бот */
+  .chat-container {
+    padding: 15px;
+  }
+  
+  #chatMessages {
+    height: 300px;
+  }
+  
+  .message-content {
+    max-width: 85%;
+  }
+  
+  /* Как это работает */
+  .steps {
+    flex-direction: column;
+  }
+  
+  .step:not(:last-child)::after {
+    display: none;
+  }
+  
+  .step {
+    margin-bottom: 2rem;
+  }
+  
+  /* Футер */
+  footer p {
+    font-size: 0.8rem;
+  }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 480px) {
+  .logo {
+    font-size: 1.5rem;
+  }
+  
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+  
+  .btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+  
+  .download-btn {
+    padding: 1rem 2rem;
+  }
+  
+  .chat-input-container {
+    flex-direction: column;
+  }
+  
+  #sendButton {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+}
