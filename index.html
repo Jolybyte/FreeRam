@@ -1,5 +1,33 @@
 <!DOCTYPE html>
 <html lang="ru">
+
+<style>
+  .mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    .mobile-menu-btn {
+      display: block;
+    }
+    
+    nav {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+    }
+    
+    nav.active {
+      display: flex;
+    }
+  }
+</style>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,6 +65,8 @@
                 </div>
             </div>
         </section>
+
+        
 
         <section class="products">
             <div class="product">
